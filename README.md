@@ -1,5 +1,5 @@
 # Ingenieria de Software - FCEFyN - UNC
-
+```
                               /
                \             / /
                 \\\' ,      / //
@@ -16,6 +16,7 @@
    ___/ /  /  __/  / /_/ /  / __/    / /_/ /  / /_/ /  / /  / /_ 
   /____/   \___/   \__, /  /_/       \__,_/   \__,_/  /_/   \__/ 
                   /____/                                          
+```
 
 Este proyecto esta construido utilizando Gradle Wrapper. Para ejecutar las tareas debe situarse en el raiz del proyecto (donde se encuentra el archivo build.gradle) y utilizar:
 
