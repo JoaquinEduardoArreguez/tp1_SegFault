@@ -13,9 +13,6 @@ public class TEST_Calc {
 	
 	@Test
 	public void test_set_data(){
-		Calc.interfaz.set_data();
-		assertEquals(Calc.interfaz.operadores_get_size(),3);
-		assertEquals(Calc.interfaz.operandos_get_size(),4);
 	}
 
 }

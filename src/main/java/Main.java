@@ -8,7 +8,7 @@ package calculadoraPorLineaDeComandos;
  *
  */
 public class Main {
-	Calc calculadora;
+	static Calc calculadora;
 
 	/**
 	 * 
@@ -20,6 +20,7 @@ public class Main {
 	/**
 	 * @param args
 	 */
+	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		calculadora.interfaz.display();
 

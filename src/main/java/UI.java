@@ -60,7 +60,9 @@ public class UI {
 	}
 	
 	Boolean verificar_array_operandos_admitidos(){
+		@SuppressWarnings("unused")
 		Iterator<Double> operandos_iterator = operandos.iterator();
+		return false;
 	}
 	
 	void set_data(){

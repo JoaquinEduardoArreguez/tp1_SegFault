@@ -20,8 +20,7 @@ public class Calc {
 	}
 	
 	static Double resolver(ArrayList<Double> operandos,ArrayList<Character> operadores){
-		Double resultado = new Double(5);
-		return resultado;
+		return null;
 		
 	}
 
