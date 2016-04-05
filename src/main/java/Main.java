@@ -20,9 +20,8 @@ public class Main {
 	/**
 	 * @param args
 	 */
-	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
-		calculadora.interfaz.display();
+		//calculadora.interfaz.display();
 
 	}
 
