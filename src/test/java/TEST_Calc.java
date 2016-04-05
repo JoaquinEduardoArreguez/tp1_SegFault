@@ -7,12 +7,10 @@ public class TEST_Calc {
 
 	@Test
 	public void testResolver() {
-		Double num=(double) 5;
-		assertEquals(Calc.resolver(null,null),num);
 	}
 	
 	@Test
-	public void test_set_data(){
+	public void test_set_data() {
 	}
 
 }
