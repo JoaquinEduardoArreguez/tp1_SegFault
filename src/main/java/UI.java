@@ -4,7 +4,9 @@
 package calculadoraPorLineaDeComandos;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  * @author joaquin
@@ -15,6 +17,8 @@ public class UI {
 
 	private ArrayList<Double> operandos;
 	private ArrayList<Character> operadores;
+	private Scanner scanner;
+	String op_admitidas = "+,-";
 	
 	/**
 	 * Constructor de UI:
@@ -23,6 +27,7 @@ public class UI {
 	public UI() {
 		operandos	= new ArrayList<Double> ();
 		operadores	= new ArrayList<Character>();
+		scanner = new Scanner (System.in);
 	}
 	
 	ArrayList<Double> get_operandos(){
@@ -33,12 +38,37 @@ public class UI {
 		return this.operadores;
 	}
 	
-	void display(Object dato){
-		System.out.println(dato);
-	}
+	void display(Object dato){System.out.println(dato);}
 	
 	@SuppressWarnings("unused")
-	private void get_expresion(){
+	private String get_expresion(){
+		System.out.println("Escriba la expresión a procesar y presione [ENTER] al finalizar:");
+		System.out.println("Sólo se aceptan las operaciones "+ op_admitidas);
+		return scanner.nextLine().trim();
+	}
+	
+	Boolean procesar_expresion(String expresion){
+		operandos = new ArrayList<Double>();	//Limpio operandos
+		operadores = new ArrayList<Character>();//Limpio operadores
+		
+		ArrayList<String> operandos_string = new ArrayList<String>(Arrays.asList(expresion.split("[+-]")));
+		for (String source : operandos_string) {
+			try{
+				add_operando(Double.parseDouble(source));
+			}
+			catch (NumberFormatException e) {
+				e.printStackTrace();
+				System.out.println("La operación que ingresó está mal escrita, ingresela correctamente.");
+				return false;
+				}
+		}
+		
+		ArrayList<String> operadores_string = new ArrayList<String>(Arrays.asList(expresion.split("[^[+-]]*")));
+		Iterator<String> operadores_string_iterator = operadores_string.iterator();
+		while (operadores_string_iterator.hasNext()){
+			System.out.println("operador::"+operadores_string_iterator.next()+"::");
+		}
+		return true;
 	}
 	
 	Boolean verificar_expresion(){
@@ -66,11 +96,21 @@ public class UI {
 		return true;
 	}
 	
+	/*
 	Boolean verificar_array_operandos_admitidos(){
-		@SuppressWarnings("unused")
+		
+		for (String source : value)
+		
+		String regExp = "[\x00-\x20]*[+-]?(NaN|Infinity|((((\p{Digit}+)(\.)?((\p{Digit}+)?)([eE][+-]?(\p{Digit}+))?)|(\.((\p{Digit}+))([eE][+-]?(\p{Digit}+))?)|(((0[xX](\p{XDigit}+)(\.)?)|(0[xX](\p{XDigit}+)?(\.)(\p{XDigit}+)))[pP][+-]?(\p{Digit}+)))[fFdD]?))[\x00-\x20]*";
 		Iterator<Double> operandos_iterator = operandos.iterator();
+		while (operandos_iterator.hasNext()){
+			Double aux=operandos_iterator.next();
+			
+			
+		}
 		return false;
 	}
+	*/
 	
 	void add_operador(Character a){operadores.add(a);}
 	void remove_operador(int index){operadores.remove(index);}
