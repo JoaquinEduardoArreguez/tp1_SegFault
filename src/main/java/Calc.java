@@ -10,18 +10,29 @@ import java.util.ArrayList;
  *
  */
 public class Calc {
-	static UI interfaz;
+	private UI interfaz;
 
 	/**
 	 * 
 	 */
 	public Calc() {
-		interfaz = new UI();
+		set_UI(new UI());
 	}
 	
-	static Double resolver(ArrayList<Double> operandos,ArrayList<Character> operadores){
-		return null;
-		
+	Double resolver(ArrayList<Double> operandos,ArrayList<Character> operadores){
+		return (double) 5;
+	}
+	
+	void dar_resultado(Double resultado){
+		this.interfaz.display(resultado);
+	}
+	
+	UI get_UI(){
+		return interfaz;
+	}
+
+	void set_UI(UI interfaz) {
+		this.interfaz = interfaz;
 	}
 
 }

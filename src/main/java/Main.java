@@ -14,15 +14,14 @@ public class Main {
 	 * 
 	 */
 	public Main() {
-		calculadora = new Calc();
+		//calculadora = new Calc();
 	}
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//calculadora.interfaz.display();
-
+		calculadora = new Calc();
 	}
 
 }
