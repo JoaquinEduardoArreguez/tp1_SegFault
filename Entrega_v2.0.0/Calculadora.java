@@ -19,16 +19,33 @@ public class Calculadora {
 	
 public void cargar_datos(){
 	expresion = pantalla.pedir_cuenta();
-	//expresion = "12+24-16-45";
-	operadores = expresion.split("[^+-]+");
-	operandos = expresion.split("[+-]");
-	
-
+	operadores = expresion.split("[^*/+-]+");
+	operandos = expresion.split("[*/+-]");
 	
 }
 
 private boolean check_syntax(){
 	if(operadores.length != operandos.length){
+		return false;
+	}
+	
+	int contador_por = 0;
+	int contador_div = 0;
+	int contador_mas = 0;
+	
+	for(String aux: operadores){
+		if(aux.equals("*")){
+			contador_por++;
+		}
+		if(aux.equals("/")){
+			contador_div++;
+		}
+		if(aux.equals("+")){
+			contador_mas++;
+		}
+	}
+	
+	if((contador_por > 0 && contador_div > 0) || (contador_por > 0 && contador_mas > 0) || (contador_div > 0 && contador_mas > 0) || contador_div > 1 || contador_por > 1){
 		return false;
 	}else{return true;}
 	
@@ -64,6 +81,19 @@ private int hacer_cuenta(){
 			operandos_enteros[indice_operandos] = operando1_aux-operando2_aux;
 	
 		}
+		if(operadores[indice_operadores].equals("*")){
+			
+			operandos_enteros[indice_operandos] = operando1_aux*operando2_aux;
+		}
+		if(operadores[indice_operadores].equals("/")){
+			if(!(operando2_aux == 0)){
+			operandos_enteros[indice_operandos] = operando1_aux/operando2_aux;
+			}else{
+				System.out.println("No se permite division por cero.");
+				return -1;
+			}
+		}
+		
 		operando1_aux = operandos_enteros[indice_operandos];
 		
 		if(operandos_enteros[indice_operandos+1] != NULL){
@@ -94,7 +124,5 @@ public void calcular(){
 		System.out.println("Checkee su sintaxis.");
 	}
 	
-	
 }
-
 }
