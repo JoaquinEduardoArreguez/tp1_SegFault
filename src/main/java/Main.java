@@ -1,27 +1,18 @@
-/**
- * 
- */
-package calculadoraPorLineaDeComandos;
+package Calc;
 
-/**
- * @author joaquin
- *
- */
 public class Main {
-	static Calc calculadora;
 
-	/**
-	 * 
-	 */
-	public Main() {
-		//calculadora = new Calc();
+	static Calculadora Calc;
+	
+	public Main(){
+
 	}
-
-	/**
-	 * @param args
-	 */
+	
 	public static void main(String[] args) {
-		calculadora = new Calc();
+		Calc = new Calculadora();
+		while(true){
+		Calc.calcular();
+		}
 	}
 
 }
