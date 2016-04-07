@@ -19,8 +19,8 @@ public class Calculadora {
 	
 public void cargar_datos(){
 	expresion = pantalla.pedir_cuenta();
-	operadores = expresion.split("[^*+-]+");
-	operandos = expresion.split("[*+-]");
+	operadores = expresion.split("[^*%+-]+");
+	operandos = expresion.split("[*%+-]");
 	
 }
 
@@ -31,6 +31,7 @@ private boolean check_syntax(){
 	
 	int contador_por = 0;
 	int contador_mas = 0;
+	int contador_porcentaje =0;
 	
 	for(String aux: operadores){
 		if(aux.equals("*")){
@@ -40,9 +41,12 @@ private boolean check_syntax(){
 		if(aux.equals("+")){
 			contador_mas++;
 		}
+		if(aux.equals("%")){
+			contador_porcentaje++;
+		}
 	}
 	
-	if((contador_por > 0 && contador_mas > 0) ||  contador_por > 1){
+	if((contador_por > 0 && contador_mas > 0) || (contador_porcentaje > 1) || (contador_porcentaje > 0 && contador_por > 0) ||  contador_por > 1){
 		return false;
 	}else{return true;}
 	
@@ -86,6 +90,11 @@ private int hacer_cuenta(){
 		if(operadores[indice_operadores].equals("*")){
 			
 			operandos_enteros[indice_operandos] = operando1_aux*operando2_aux;
+		}
+		
+		if(operadores[indice_operadores].equals("%")){
+			
+			operandos_enteros[indice_operandos] = operando1_aux%operando2_aux;
 		}
 		
 		operando1_aux = operandos_enteros[indice_operandos];
