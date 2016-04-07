@@ -53,6 +53,11 @@ private boolean check_syntax(){
 
 private boolean pasar_a_entero(){
 
+	for(int i = 0 ; i<1000 ; i++){
+		operandos_enteros[i]=null;
+	
+	}
+	
 	for(int i = 0 ; i<operandos.length ; i++){
 		try{operandos_enteros[i] = Integer.parseInt(operandos[i]);	}
 		catch(NumberFormatException e){
@@ -102,8 +107,8 @@ private int hacer_cuenta(){
 		}
 		
 	}
-	
-	return operandos_enteros[indice_operandos];
+	int aux=operandos_enteros[indice_operandos];
+	return aux;
 	
 }
 
